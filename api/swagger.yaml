@@ -65,9 +65,9 @@ paths:
                   - _links
         '404':
           description: No patient matching the specified filter
-  	  X-data-sources:
-		  - patientBiographicalData
-		  - bmiTestSource	
+      x-data-sources:
+        - patientBiographicalData
+        - bmiTestSource	
   '/blood-test/component/{component}/average/{startAgeRange}-{endAgeRange}':
     get:
       summary: Get average of component over an age range
@@ -125,7 +125,7 @@ paths:
                   - _links
         '404':
           description: Component never measured
-	  X-data-sources:
-		  - bloodTestSource
+      x-data-sources:
+        - bloodTestSource
 
 
