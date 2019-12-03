@@ -1,70 +1,697 @@
 {
-	"INTERNAL_STRUCTURE": {
-		"Overview": {
-			"name": "",
-			"description": "",
+    "INTERNAL_STRUCTURE": {
+        "Overview": {
+            "name": "",
+            "description": "",
             "tags": [
-				{
-					"method_id": "",
-					"tags": [""]
-				}
-			]
-		},
-		"Data_Sources": [],
-		"Methods_Input": {
-			"Methods": [
-				{
-					"method_id": "",
-					"data_sources": [{
-				            "dataSource_id": "",
-				            "dataSource_type": "",
-				            "database": [{
-					        "database_id": "",
-					        "tables": [{
-						    "table_id": "",
-						    "columns": [{
-							"column_id": "",
-							"computeDataUtility": true
-						               }]
-					                   }]
-				                         }]
-				                         }]}]}
-		,
-		"Flow": {},
-		"DAL_Images": {
-
-		},
-		"VDC_Images": {
-
-		},
-		"Identity_Access_Management": {
-			"jwks_uri": "",
-			"iam_endpoint": ""
-		},
-		"Testing_Output_Data": [
-			{
-				"method_id": "",
-				"zip_data": ""
-			}
-		]		
-	},	
-	"DATA_MANAGEMENT": [
-		{
-			"method_id": "",
-			"attributes": {
-				"dataUtility": [],
-				"security": [],
-				"privacy": []
-			}
-		}
-	],	
-	"ABSTRACT_PROPERTIES": {
-	
-	},	
-	"COOKBOOK_APPENDIX": {
-		
-	},	
-	"EXPOSED_API": {
-        
+                {
+                    "method_id": "getNutritionalData",
+                    "tags": [
+                        ""
+                    ]
+                },
+                {
+                    "method_id": "getBloodTestComponentAverage",
+                    "tags": [
+                        ""
+                    ]
+                }
+            ]
+        },
+        "Data_Sources": [],
+        "Methods_Input": {
+            "Methods": [
+                {
+                    "method_id": "getNutritionalData",
+                    "data_sources": [
+                        {
+                            "dataSource_id": "",
+                            "dataSource_type": "",
+                            "database": [
+                                {
+                                    "database_id": "",
+                                    "tables": [
+                                        {
+                                            "table_id": "",
+                                            "columns": [
+                                                {
+                                                    "column_id": "",
+                                                    "computeDataUtility": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "method_id": "getBloodTestComponentAverage",
+                    "data_sources": [
+                        {
+                            "dataSource_id": "",
+                            "dataSource_type": "",
+                            "database": [
+                                {
+                                    "database_id": "",
+                                    "tables": [
+                                        {
+                                            "table_id": "",
+                                            "columns": [
+                                                {
+                                                    "column_id": "",
+                                                    "computeDataUtility": true
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        "Flow": {},
+        "DAL_Images": {
+            "dal_image": {
+                "internalPort": 30100,
+                "externalPort": 30100,
+                "image": "dockerrepo_ip:5050/image_name",
+                "original_ip": "original_ip"
+            }
+        },
+        "VDC_Images": {
+            "vdc_image": {
+                "internalPort": 1888,
+                "externalPort": 1888,
+                "image": "dockerrepo_ip:5050/image_name"
+            }
+        },
+        "Identity_Access_Management": {
+            "jwks_uri": "",
+            "iam_endpoint": "",
+            "roles": [
+                "role"
+            ]
+        },
+        "Testing_Output_Data": [
+            {
+                "method_id": "getNutritionalData",
+                "zip_data": ""
+            },
+            {
+                "method_id": "getBloodTestComponentAverage",
+                "zip_data": ""
+            }
+        ]
+    },
+    "DATA_MANAGEMENT": [
+        {
+            "method_id": "getNutritionalData",
+            "attributes": {
+                "dataUtility": [
+                    {
+                        "id": "volume_8000",
+                        "description": "volume 8000",
+                        "type": "Volume",
+                        "properties": {
+                            "volume": {
+                                "value": 8000,
+                                "unit": "tuple"
+                            }
+                        }
+                    },
+                    {
+                        "id": "accuracy_08",
+                        "description": "Accuracy",
+                        "type": "Accuracy",
+                        "properties": {
+                            "accuracy": {
+                                "minimum": 80,
+                                "unit": "percentage"
+                            }
+                        }
+                    },
+                    {
+                        "id": "processCompleteness_8",
+                        "description": "Process completeness 8",
+                        "type": "Process completeness",
+                        "properties": {
+                            "completeness": {
+                                "minimum": 80,
+                                "unit": "percentage"
+                            }
+                        }
+                    },
+                    {
+                        "id": "timeliness",
+                        "description": "Timeliness",
+                        "type": "Timeliness",
+                        "properties": {
+                            "timeliness": {
+                                "minimum": 90,
+                                "unit": "percentage"
+                            }
+                        }
+                    },
+                    {
+                        "id": "responseTime",
+                        "description": "ResponseTime",
+                        "type": "ResponseTime",
+                        "properties": {
+                            "responseTime": {
+                                "maximum": 0.5,
+                                "unit": "second"
+                            }
+                        }
+                    },
+                    {
+                        "id": "availability",
+                        "description": "Availability",
+                        "type": "Availability",
+                        "properties": {
+                            "availability": {
+                                "unit": "percentage",
+                                "minimum": 95
+                            }
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "id": "encryption_AES128",
+                        "description": "Encryption AES 128",
+                        "type": "TransportEncryption",
+                        "properties": {
+                            "protocol": {
+                                "unit": "enum",
+                                "value": "TLS"
+                            },
+                            "algorithm": {
+                                "unit": "list",
+                                "value": [
+                                    "TLS_AES_256_GCM_SHA384",
+                                    "TLS_AES_128_GCM_SHA256",
+                                    "TLS_AES_128_CCM_8_SHA256",
+                                    "TLS_AES_128_CCM_SHA256"
+                                ]
+                            },
+                            "keyLength": {
+                                "unit": "number",
+                                "value": 128
+                            }
+                        }
+                    },
+                    {
+                        "id": "tracing_1",
+                        "description": "Tracing 1",
+                        "type": "Tracing",
+                        "properties": {
+                            "level": {
+                                "unit": "enum",
+                                "value": "datasource"
+                            },
+                            "sampleRate": {
+                                "unit": "percentage",
+                                "value": 1
+                            },
+                            "instrumentation": {
+                                "unit": "enum",
+                                "value": "VDC"
+                            }
+                        }
+                    },
+                    {
+                        "id": "acl_userPW_researcher",
+                        "description": "ACL username/password researcher_id",
+                        "type": "Protocol",
+                        "properties": {
+                            "required": {
+                                "value": "true"
+                            },
+                            "protocol": {
+                                "unit": "enum",
+                                "value": "username/password"
+                            },
+                            "credentials": {
+                                "unit": "list",
+                                "value": [
+                                    "researcher_id"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "privacy": [
+                    {
+                        "id": "purposeControl_research",
+                        "description": "PurposeControl research",
+                        "type": "PurposeControl",
+                        "properties": {
+                            "availablePurpose": {
+                                "unit": "list",
+                                "value": [
+                                    "research",
+                                    "medical research",
+                                    "nutritional research"
+                                ]
+                            },
+                            "allowedGuarantor": {
+                                "unit": "list",
+                                "value": [
+                                    "d63d0e21fdc05f618d55ef306c54af82"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "method_id": "getBloodTestComponentAverage",
+            "attributes": {
+                "dataUtility": [
+                    {
+                        "id": "volume_8000",
+                        "description": "volume 8000",
+                        "type": "Volume",
+                        "properties": {
+                            "volume": {
+                                "value": 8000,
+                                "unit": "tuple"
+                            }
+                        }
+                    },
+                    {
+                        "id": "accuracy_08",
+                        "description": "Accuracy",
+                        "type": "Accuracy",
+                        "properties": {
+                            "accuracy": {
+                                "minimum": 80,
+                                "unit": "percentage"
+                            }
+                        }
+                    },
+                    {
+                        "id": "processCompleteness_8",
+                        "description": "Process completeness 8",
+                        "type": "Process completeness",
+                        "properties": {
+                            "completeness": {
+                                "minimum": 80,
+                                "unit": "percentage"
+                            }
+                        }
+                    },
+                    {
+                        "id": "timeliness",
+                        "description": "Timeliness",
+                        "type": "Timeliness",
+                        "properties": {
+                            "timeliness": {
+                                "minimum": 90,
+                                "unit": "percentage"
+                            }
+                        }
+                    },
+                    {
+                        "id": "responseTime",
+                        "description": "ResponseTime",
+                        "type": "ResponseTime",
+                        "properties": {
+                            "responseTime": {
+                                "maximum": 0.5,
+                                "unit": "second"
+                            }
+                        }
+                    },
+                    {
+                        "id": "availability",
+                        "description": "Availability",
+                        "type": "Availability",
+                        "properties": {
+                            "availability": {
+                                "unit": "percentage",
+                                "minimum": 95
+                            }
+                        }
+                    }
+                ],
+                "security": [
+                    {
+                        "id": "encryption_AES128",
+                        "description": "Encryption AES 128",
+                        "type": "TransportEncryption",
+                        "properties": {
+                            "protocol": {
+                                "unit": "enum",
+                                "value": "TLS"
+                            },
+                            "algorithm": {
+                                "unit": "list",
+                                "value": [
+                                    "TLS_AES_256_GCM_SHA384",
+                                    "TLS_AES_128_GCM_SHA256",
+                                    "TLS_AES_128_CCM_8_SHA256",
+                                    "TLS_AES_128_CCM_SHA256"
+                                ]
+                            },
+                            "keyLength": {
+                                "unit": "number",
+                                "value": 128
+                            }
+                        }
+                    },
+                    {
+                        "id": "tracing_1",
+                        "description": "Tracing 1",
+                        "type": "Tracing",
+                        "properties": {
+                            "level": {
+                                "unit": "enum",
+                                "value": "datasource"
+                            },
+                            "sampleRate": {
+                                "unit": "percentage",
+                                "value": 1
+                            },
+                            "instrumentation": {
+                                "unit": "enum",
+                                "value": "VDC"
+                            }
+                        }
+                    },
+                    {
+                        "id": "acl_userPW_researcher",
+                        "description": "ACL username/password researcher_id",
+                        "type": "Protocol",
+                        "properties": {
+                            "required": {
+                                "value": "true"
+                            },
+                            "protocol": {
+                                "unit": "enum",
+                                "value": "username/password"
+                            },
+                            "credentials": {
+                                "unit": "list",
+                                "value": [
+                                    "researcher_id"
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "privacy": [
+                    {
+                        "id": "purposeControl_research",
+                        "description": "PurposeControl research",
+                        "type": "PurposeControl",
+                        "properties": {
+                            "availablePurpose": {
+                                "unit": "list",
+                                "value": [
+                                    "research",
+                                    "medical research",
+                                    "nutritional research"
+                                ]
+                            },
+                            "allowedGuarantor": {
+                                "unit": "list",
+                                "value": [
+                                    "d63d0e21fdc05f618d55ef306c54af82"
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "ABSTRACT_PROPERTIES": {},
+    "COOKBOOK_APPENDIX": {
+        "Resources": {
+            "name": "osr-resources-cloudsigma",
+            "description": "OSR resources at Cloudsigma available to our clients",
+            "infrastructures": [
+                {
+                    "name": "infr-cloudsigma",
+                    "type": "cloud",
+                    "provider": {
+                        "api_endpoint": "https://fra.cloudsigma.com/api/2.0",
+                        "api_type": "cloudsigma",
+                        "credentials": {
+                            "username": "ditas@eservices4life.org",
+                            "password": "ASK-FOR-IT"
+                        },
+                        "secret_id": ""
+                    },
+                    "extra_properties": {
+                        "kubeadm_preinstalled_image": "true",
+                        "owner": "DataAdministrator",
+                        "ditas_default": "true"
+                    },
+                    "resources": [
+                        {
+                            "name": "osr-c1",
+                            "cpu": 4000,
+                            "ram": 4096,
+                            "disk": 40960,
+                            "drives": [
+                                {
+                                    "name": "osr-c1-d1",
+                                    "size": 10000,
+                                    "type": "SSD"
+                                }
+                            ],
+                            "image_id": "d681bc39-df58-4301-8aa5-0b61b2d4de17",
+                            "role": "master",
+                            "extra_properties": {
+                                "cloudsigma_boot_drive_type": "custom"
+                            }
+                        },
+                        {
+                            "name": "osr-c2",
+                            "cpu": 4000,
+                            "ram": 4096,
+                            "disk": 40960,
+                            "drives": [
+                                {
+                                    "name": "osr-c2-d1",
+                                    "size": 10000,
+                                    "type": "SSD"
+                                }
+                            ],
+                            "image_id": "d681bc39-df58-4301-8aa5-0b61b2d4de17",
+                            "role": "slave",
+                            "extra_properties": {
+                                "cloudsigma_boot_drive_type": "custom"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "EXPOSED_API": {
+        "openapi": "3.0.1",
+        "info": {
+            "title": "CAF API",
+            "version": "0.0.2"
+        },
+        "paths": {
+            "/nutritional-data/{filter}": {
+                "get": {
+                    "summary": "Get patients nutritional data given some filters",
+                    "description": "This method returns gender, age, BMI, cholesterol of patients that have / do not have a specified pathology",
+                    "operationId": "getNutritionalData",
+                    "parameters": [
+                        {
+                            "name": "Authorization",
+                            "in": "header",
+                            "description": "Authorization token",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "filter",
+                            "in": "path",
+                            "description": "Filter for selecting patients that have / do not have a specified pathology",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Average value for the specified component in the selected age range",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "data": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "gender": {
+                                                            "type": "string"
+                                                        },
+                                                        "age": {
+                                                            "type": "integer"
+                                                        },
+                                                        "bmi": {
+                                                            "type": "number"
+                                                        },
+                                                        "cholesterol": {
+                                                            "type": "number"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "gender",
+                                                        "age",
+                                                        "bmi",
+                                                        "cholesterol"
+                                                    ]
+                                                },
+                                                "minItems": 1
+                                            },
+                                            "_links": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "self": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "href": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "href"
+                                                        ]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "self"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "data",
+                                            "_links"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "No patient matching the specified filter"
+                        }
+                    },
+                    "x-data-sources": [
+                        "patientBiographicalData",
+                        "bmiTestSource"
+                    ]
+                }
+            },
+            "/blood-test/component/{component}/average/{startAgeRange}-{endAgeRange}": {
+                "get": {
+                    "summary": "Get average of component over an age range",
+                    "description": "This method returns the average value for a specific blood test component in a specific age range, to be used by researchers. Since data are for researchers, patients' identifiers and quasi-identifiers won't be returned, making the output of this method anonymized.",
+                    "operationId": "getBloodTestComponentAverage",
+                    "parameters": [
+                        {
+                            "name": "Authorization",
+                            "in": "header",
+                            "description": "Authorization token",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "component",
+                            "in": "path",
+                            "description": "Blood test component for which the last value is requested",
+                            "required": true,
+                            "schema": {
+                                "type": "string"
+                            }
+                        },
+                        {
+                            "name": "startAgeRange",
+                            "in": "path",
+                            "description": "Start age in age range",
+                            "required": true,
+                            "schema": {
+                                "type": "number"
+                            }
+                        },
+                        {
+                            "name": "endAgeRange",
+                            "in": "path",
+                            "description": "End age in age range",
+                            "required": true,
+                            "schema": {
+                                "type": "number"
+                            }
+                        }
+                    ],
+                    "responses": {
+                        "200": {
+                            "description": "Average value for the specified component in the selected age range",
+                            "content": {
+                                "application/json": {
+                                    "schema": {
+                                        "type": "object",
+                                        "properties": {
+                                            "value": {
+                                                "type": "number"
+                                            },
+                                            "_links": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "self": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "href": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "href"
+                                                        ]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "self"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "value",
+                                            "_links"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "404": {
+                            "description": "Component never measured"
+                        }
+                    },
+                    "x-data-sources": [
+                        "bloodTestSource"
+                    ]
+                }
+            }
+        }
     }
 }
